@@ -10,7 +10,7 @@ import Utils.Utils;
  *
  * @author LENOVO
  */
-public class Lab {
+public class Main {
 
     public static void main(String[] args) {
         String inputString = Utils.getValue("Enter your content: ");
