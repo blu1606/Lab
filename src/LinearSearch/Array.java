@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class Array {
     private int size;
-    private int arr[];
+    private final int arr[];
     Random random = new Random();
 
     public Array(int size) {
