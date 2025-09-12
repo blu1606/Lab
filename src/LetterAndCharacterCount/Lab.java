@@ -4,7 +4,7 @@
  */
 package LetterAndCharacterCount;
 
-import java.util.Scanner;
+import Utils.Utils;
 
 /**
  *
@@ -13,13 +13,10 @@ import java.util.Scanner;
 public class Lab {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter your content:");
-        String inputString = scanner.nextLine();
+        String inputString = Utils.getValue("Enter your content: ");
         Words counter = new Words(inputString);
         System.out.println(counter.countWordFrequency());
         System.out.println(counter.countCharacterFrequency());
-        scanner.close();
     }
     
 }
