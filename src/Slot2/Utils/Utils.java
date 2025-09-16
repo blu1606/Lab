@@ -55,6 +55,16 @@ public class Utils {
         }
     }
 
+    public static double getPosDouble(String prompt) {
+        while (true) {
+            double value = Utils.getDoubleValue(prompt + ": ");
+            if (value > 0) {
+                return value;
+            }
+            System.out.println("Please enter a positive number.");
+        }
+    }
+
     public static Date getDateValue(String prompt) {
         while (true) {
             System.out.print(prompt);
