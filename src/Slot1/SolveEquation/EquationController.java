@@ -4,9 +4,6 @@ import Utils.Menu;
 import Utils.Utils;
 import java.util.List;
 
-/**
- * Simplified controller managing the main program flow
- */
 public class EquationController extends Menu {
     private final EquationSolver solver;
     
@@ -30,10 +27,6 @@ public class EquationController extends Menu {
         }
     }
     
-    /**
-     * General equation solving method
-     * @param isLinear true for linear equation, false for quadratic
-     */
     private void solveEquation(boolean isLinear) {
         System.out.println(isLinear ? 
             "\n=== LINEAR EQUATION: ax + b = 0 ===" : 
@@ -60,9 +53,6 @@ public class EquationController extends Menu {
         Utils.getValue("");
     }
     
-    /**
-     * Display equation solutions
-     */
     private void displaySolutions(List<Float> solutions) {
         System.out.println("\n=== RESULT ===");
         if (solutions == null) {
@@ -79,9 +69,6 @@ public class EquationController extends Menu {
         System.out.println("=============");
     }
     
-    /**
-     * Simple equation formatting
-     */
     private String formatEquation(float a, float b, float c, boolean isLinear) {
         return isLinear ? 
             String.format("%.1fx + %.1f = 0", a, b) :

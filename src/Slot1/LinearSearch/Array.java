@@ -12,9 +12,8 @@ import java.util.Random;
  * @author LENOVO
  */
 public class Array {
-    private int size;
     private final int arr[];
-    Random random = new Random();
+    Random random;
 
     public Array(int size) {
         arr = new int[size];
@@ -23,29 +22,14 @@ public class Array {
     
     
     public final void generateRandomArray(int size) {
+        random = new Random();
         for (int i = 0; i < size; i++) {
-            arr[i] = random.nextInt(size * 2);
+            arr[i] = random.nextInt(size);
         }
     }
 
     public int[] getArr() {
         return arr;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public void setSize(int size) {
-        this.size = size;
-    }
-
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
     }
     
     public int linearSearch(int value) {

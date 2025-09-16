@@ -35,6 +35,14 @@ public class Utils {
             }
         }
     }
+    
+    public static int getPosIntValue(String prompt) {
+        while (true) {
+            int res = getIntValue(prompt);
+            if (res < 1) continue;
+            return res; 
+        }
+    }
 
     public static double getDoubleValue(String prompt) {
         while (true) {

@@ -9,12 +9,6 @@ import java.util.List;
  */
 public class EquationSolver {
     
-    /**
-     * Solve linear equation: ax + b = 0
-     * @param a coefficient a
-     * @param b coefficient b  
-     * @return null if no solution, empty List if infinite solutions, List containing solution if unique solution exists
-     */
     public List<Float> calculateEquation(float a, float b) {
         List<Float> result = new ArrayList<>();
         
@@ -34,13 +28,6 @@ public class EquationSolver {
         }
     }
     
-    /**
-     * Solve quadratic equation: ax² + bx + c = 0
-     * @param a coefficient a
-     * @param b coefficient b
-     * @param c coefficient c
-     * @return null if no solution, List containing solution(s)
-     */
     public List<Float> calculateQuadraticEquation(float a, float b, float c) {
         List<Float> result = new ArrayList<>();
         
@@ -71,10 +58,6 @@ public class EquationSolver {
         return result;
     }
     
-    /**
-     * Analyze coefficients for mathematical properties
-     * @param numbers list of coefficients to analyze
-     */
     public void analyzeNumbers(List<Float> numbers) {
         if (numbers == null || numbers.isEmpty()) {
             System.out.println("No numbers to analyze.");
@@ -129,16 +112,10 @@ public class EquationSolver {
         System.out.println("\n========================\n");
     }
     
-    /**
-     * Check if a number is an integer
-     */
     private boolean isInteger(Float number) {
         return number != null && number.equals((float) Math.floor(number));
     }
     
-    /**
-     * Check if a number is a perfect square
-     */
     private boolean isPerfectSquare(Float number) {
         if (number < 0 || !isInteger(number)) return false;
         float sqrt = (float) Math.sqrt(number);
