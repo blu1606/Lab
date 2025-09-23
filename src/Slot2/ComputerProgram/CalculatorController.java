@@ -5,12 +5,10 @@ import Utils.Utils;
 
 
 public class CalculatorController extends Menu {
-    private final CalculatorService service;
     
     public CalculatorController() {
         super("========= Calculator Program =========", 
               new String[]{"Normal Calculator", "BMI Calculator", "Exit"});
-        service = new CalculatorService();
     }
     
     @Override
@@ -18,7 +16,6 @@ public class CalculatorController extends Menu {
         switch (choice) {
             case 1 -> normalCalculator();
             case 2 -> bmiCalculator();
-            case 3 -> System.out.println("Goodbye!");
             default -> System.out.println("Invalid choice!");
         }
     }
@@ -26,30 +23,22 @@ public class CalculatorController extends Menu {
     private void normalCalculator() {
         System.out.println("----- Normal Calculator -----");
         
-        // Get first number 
-        double memory = Utils.getDoubleValue("Enter number: ");
-        
+        Calculator calc = new Calculator(Utils.getDoubleValue("Enter number: "));
         while (true) {
             // Get operator 
-            String operator = Utils.getFormattedValue("Enter Operator: ", "Please input (+, -, *, /, ^)", "^[+\\-*/^=]$");
+            String operator = Utils.getFormattedValue("Enter Operator: ", 
+                            "Please input (+, -, *, /, ^)", "^[+\\-*/^=]$");
             
             // Check if equals
             if (operator.equals("=")) {
-                System.out.println("Result: " + memory);
+                System.out.println("Result: " + calc.getMemory());
                 break;
             }
             
             // Get next number
             double nextNumber = Utils.getDoubleValue("Enter number: ");
-            
-            try {
-                // Calculate and update memory
-                memory = service.calculate(memory, operator, nextNumber);
-                System.out.println("Memory: " + memory);
-            } catch (ArithmeticException e) {
-                System.out.println("Error: " + e.getMessage());
-                return;
-            }
+            calc.doCalculation(nextNumber, operator);
+            System.out.println("Memory: " + calc.getMemory());
         }
     }
     
@@ -58,31 +47,12 @@ public class CalculatorController extends Menu {
      */
     private void bmiCalculator() {
         System.out.println("----- BMI Calculator -----");
-        
-        // Get weight
-        double weight = getValidDoubleWithCustomError("Enter Weight(kg): ");
-        
-        // Get height  
-        double height = getValidDoubleWithCustomError("Enter Height(cm): ");
-        
-        // Calculate BMI
-        String result = service.calculateBMI(weight, height);
-        String[] parts = result.split(" - ");
-        System.out.println("BMI Number: " + parts[0]);
-        System.out.println("BMI Status: " + parts[1]);
-    }
-    
-    /**
-     * Get valid double with custom error message for BMI
-     */
-    private double getValidDoubleWithCustomError(String prompt) {
-        while (true) {
-            try {
-                String input = Utils.getValue(prompt);
-                return Double.parseDouble(input);
-            } catch (NumberFormatException e) {
-                System.out.println("BMI is digit");
-            }
-        }
+
+        double weight = Utils.getDoubleValueWithErr("Enter Weight(kg): ", "Invalid input. Please enter a valid weight.");
+        double height = Utils.getDoubleValueWithErr("Enter Height(m): ", "Invalid input. Please enter a valid height.");
+
+        BMI bmi = new BMI(weight, height);
+        System.out.println("BMI Number: " + bmi.getBmi());
+        System.out.println("BMI Status: " + bmi.getStatus());
     }
 }

@@ -99,4 +99,13 @@ public class Utils {
     public static String formatDate(Date date) {
         return sdf.format(date);
     }
+
+    public static int[] getArray(String prompt) {
+        int n = getPosIntValue("Enter the number of the array: ");
+        int[] array = new int[n];
+        for (int i = 0; i < n; i++) {
+            array[i] = getPosIntValue(prompt + " [" + (i + 1) + "]: ");
+        }
+        return array;
+    }
 }

@@ -24,10 +24,6 @@ public class MatrixCalculationController extends Menu {
             case 1 -> performAddition();
             case 2 -> performSubtraction();
             case 3 -> performMultiplication();
-            case 4 -> {
-                System.out.println("Goodbye!");
-                return;
-            }
             default -> System.out.println("Invalid choice! Please try again.");
         }
     }
