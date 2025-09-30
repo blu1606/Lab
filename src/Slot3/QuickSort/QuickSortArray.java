@@ -19,26 +19,27 @@ public class QuickSortArray {
     }
 
     public void sort(int low, int high) {
-        int mid = low + (high - low) / 2;
+        
         if (low < high) {
-            int pi = partition(low, high, mid);
+            int pi = partition(low, high);
             sort(low, pi - 1);
             sort(pi + 1, high);
         }
     }
 
-    private int partition(int low, int high, int mid) {
+    private int partition(int low, int high) {
+        int mid = low + (high - low) / 2;
         int pivot = array[mid];
-        swap(mid, high);
-        int i = low - 1;
-        for (int j = low; j < high; j++) {
-            if (array[j] <= pivot) {
-                i++;
-                swap(i, j);
+        while (low <= high) {
+            while (array[low] < pivot) low++;
+            while (array[high] > pivot) high--;
+            if (low <= high) {
+                swap(low, high);
+                low++;
+                high--;
             }
         }
-        swap(i + 1, high);
-        return i + 1;
+        return low;
     }
 
     private void swap(int i, int j) {

@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FPT/CSD/Lab/src/LetterAndCharacterCount/Main.java</file>
-            <file>file:/D:/FPT/CSD/Lab/src/LetterAndCharacterCount/Words.java</file>
-            <file>file:/D:/FPT/CSD/Lab/src/SolveEquation/Main.java</file>
-            <file>file:/D:/FPT/CSD/Lab/src/SolveEquation/EquationSolver.java</file>
-            <file>file:/D:/FPT/CSD/Lab/src/SolveEquation/EquationController.java</file>
-            <file>file:/D:/FPT/CSD/Lab/src/ChangeBaseNumberSystem1/ConverterController.java</file>
-            <file>file:/D:/FPT/CSD/Lab/src/ChangeBaseNumberSystem1/Main.java</file>
-            <file>file:/D:/FPT/CSD/Lab/src/Utils/Utils.java</file>
-            <file>file:/D:/FPT/CSD/Lab/src/LinearSearch/Array.java</file>
-            <file>file:/D:/FPT/CSD/Lab/src/LinearSearch/Main.java</file>
+            <file>file:/D:/FPT/CSD/Lab/src/Slot4/StudentManagement/Main.java</file>
+            <file>file:/D:/FPT/CSD/Lab/src/Slot4/StudentManagement/Student.java</file>
+            <file>file:/D:/FPT/CSD/Lab/src/Slot4/StudentManagement/StudentController.java</file>
+            <file>file:/D:/FPT/CSD/Lab/src/Slot4/StudentManagement/StudentRepository.java</file>
         </group>
     </open-files>
 </project-private>
