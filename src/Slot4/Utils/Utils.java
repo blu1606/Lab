@@ -2,6 +2,8 @@ package Utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -107,5 +109,67 @@ public class Utils {
             array[i] = getPosIntValue(prompt + " [" + (i + 1) + "]: ");
         }
         return array;
+    }
+
+    // Get LocalDate with year validation (year must be before current year)
+    public static LocalDate getDateValueWithYearCheck(String prompt) {
+        while (true) {
+            Date date = getDateValue(prompt);
+            if (date != null) {
+                LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+                int currentYear = LocalDate.now().getYear();
+                if (localDate.getYear() < currentYear) {
+                    return localDate;
+                } else {
+                    System.out.println("Error: Year of birth must be before current year (" + currentYear + ")!");
+                }
+            }
+        }
+    }
+
+    // Convert Date to LocalDate
+    public static LocalDate dateToLocalDate(Date date) {
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+
+    // Convert LocalDate to Date
+    public static Date localDateToDate(LocalDate localDate) {
+        return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
+
+    // Get integer value with range validation
+    public static int getIntValueInRange(String prompt, int min, int max, String errMsg) {
+        while (true) {
+            int value = getIntValue(prompt);
+            if (value >= min && value < max) {
+                return value;
+            } else {
+                System.out.println(errMsg);
+            }
+        }
+    }
+
+    // Get double value with minimum validation
+    public static double getDoubleValueWithMin(String prompt, double min, String errMsg) {
+        while (true) {
+            double value = getDoubleValue(prompt);
+            if (value >= min) {
+                return value;
+            } else {
+                System.out.println(errMsg);
+            }
+        }
+    }
+
+    // Get double value with range validation
+    public static double getDoubleValueInRange(String prompt, double min, double max, String errMsg) {
+        while (true) {
+            double value = getDoubleValue(prompt);
+            if (value >= min && value <= max) {
+                return value;
+            } else {
+                System.out.println(errMsg);
+            }
+        }
     }
 }

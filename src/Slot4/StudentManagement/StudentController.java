@@ -57,7 +57,7 @@ public class StudentController extends Menu {
 
     private void findAndSort() {
         String name = Utils.getValue("Enter Student Name to search: ");
-        ArrayList<Student> foundStudents = studentRepo.search(s -> s.getName().toLowerCase().contains(name.toLowerCase()));
+        ArrayList<Person> foundStudents = studentRepo.search(s -> s.getName().toLowerCase().contains(name.toLowerCase()));
         if (foundStudents.isEmpty()) {
             System.out.println("No students found with the name containing: " + name);
             return;
@@ -65,14 +65,14 @@ public class StudentController extends Menu {
         System.out.println("Found Students:");
         studentRepo.sortStudentsByName();
         System.out.println("Students sorted by name:");
-        for (Student student : foundStudents) {
+        for (Person student : foundStudents) {
             System.out.println(student);
         }
     }
 
     private void updateStudent() {
         String id = Utils.getValue("Enter Student ID to update: ");
-        ArrayList<Student> students = studentRepo.search(s -> s.getId().equals(id));
+        ArrayList<Person> students = studentRepo.search(s -> s.getId().equals(id));
         if (students.size() == 1) {
             studentRepo.updateStudent(students.get(0));
         } else {
@@ -82,7 +82,7 @@ public class StudentController extends Menu {
 
     private void deleteStudent() {
         String id = Utils.getValue("Enter Student ID to delete: ");
-        ArrayList<Student> students = studentRepo.search(s -> s.getId().equals(id));
+        ArrayList<Person> students = studentRepo.search(s -> s.getId().equals(id));
         if (students.size() == 1) {
             studentRepo.removeStudent(students.get(0));
             System.out.println("Student deleted successfully.");

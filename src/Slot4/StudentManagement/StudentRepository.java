@@ -15,7 +15,7 @@ import java.util.function.Predicate;
  * @author LENOVO
  */
 public class StudentRepository {
-    private ArrayList<Student> students;
+    private ArrayList<Person> students;
 
     public StudentRepository() {
         students = new ArrayList<>();
@@ -34,11 +34,11 @@ public class StudentRepository {
             "Pls enter right course!!",
             "Java|C/C\\\\+\\\\+|\\\\.Net"
         );
-        students.add(new Student(id, name, semester, courseName));
+        students.add(new Person(id, name, semester, courseName));
     }
 
     // sort by comparator
-    Comparator<Student> studentComparator = (Student s1, Student s2) -> {
+    Comparator<Person> studentComparator = (Person s1, Person s2) -> {
         int nameComparison = s1.getName().compareToIgnoreCase(s2.getName());
         if (nameComparison != 0) {
             return nameComparison;
@@ -51,9 +51,9 @@ public class StudentRepository {
     }
 
     // search predicate
-    public ArrayList<Student> search(Predicate<Student> condition) {
-        ArrayList<Student> results = new ArrayList<>();
-        for (Student student : students) {
+    public ArrayList<Person> search(Predicate<Person> condition) {
+        ArrayList<Person> results = new ArrayList<>();
+        for (Person student : students) {
             if (condition.test(student)) {
                 results.add(student);
             }
@@ -62,14 +62,14 @@ public class StudentRepository {
             System.out.println("No matching students found.");
         } else {
             System.out.println("Search Results:");
-            for (Student student : results) {
+            for (Person student : results) {
                 System.out.println(student);
             }
         }
         return results;
     }
 
-    public void updateStudent(Student student) {
+    public void updateStudent(Person student) {
         String newName = Utils.getValue("Enter new name (leave blank to keep current): ");
         if (!newName.isEmpty()) {
             student.setName(newName);
@@ -84,18 +84,18 @@ public class StudentRepository {
         }
     }
 
-    public void removeStudent(Student student) {
+    public void removeStudent(Person student) {
         students.remove(student);
     }
 
-    public ArrayList<Student> getAllStudents() {
+    public ArrayList<Person> getAllStudents() {
         return students;
     }
     // Report: Student name | Course | Total of Course
     public void reportStudentCourseCount() {
         // Map: (studentName, courseName) -> count
         Map<String, Map<String, Integer>> reportMap = new HashMap<>();
-        for (Student s : students) {
+        for (Person s : students) {
             String name = s.getName();
             String course = s.getCourseName();
             reportMap.putIfAbsent(name, new HashMap<>());
